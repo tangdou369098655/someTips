@@ -2,15 +2,15 @@
 @[前端防錯以及好用小tips指南總結](https://aaa/README.md)
 
 
-简体中文 | [English](https://aaa/master/README_eng.md)
 
 
 ### 1.一般情況下我們接收到的都是對象格式，某些情況下，需要接到後端傳過來的奇怪的字符串格式的JSON,需要解析成對象，但是有時候他們傳過來的格式有問題，會報錯
+
 * 解決方案：可以将方法放在try{JSON.parse(...)}catch(e){}代码块中。
 * 好用的JSON.stringify 方法
 
 ```bash
-// 1.1接受一个数组参数，指定需要转成字符串的属性，第二个参数指定，只转a属性。
+    // 1.1接受一个数组参数，指定需要转成字符串的属性，第二个参数指定，只转a属性。
     JSON.stringify({ a: 1, b: 2 }, ['a'])
     // '{"a":1}'
     // 1.2接受函数参数，转化对象的键和值
@@ -61,7 +61,7 @@
 ### 4.輸入框防呆要注意:如果是字符串類型就用myInput && myInput.trim()
 
 ```bash
-const myInput = '   '
+    const myInput = '   '
     if (myInput && myInput.trim()) { console.log('這個輸入框不為空') }
 ```
 ### 5.禁止給未声明的变量赋值,否則會搞出来很多全局变量
@@ -93,7 +93,7 @@ const myInput = '   '
 * 好用的
 
 ```bash
-var arr = [1, 2, 3, 4, 5];
+    var arr = [1, 2, 3, 4, 5];
     var num = 3;
     arr.forEach(function (v) {
       if (v == num) {
@@ -150,7 +150,7 @@ var arr = [1, 2, 3, 4, 5];
 ### 11.防止後端瞎搞，常用的寫法
 
 ```bash
-var ccc = { a: { t: 123 } }
+    var ccc = { a: { t: 123 } }
     function setC() { ccc['b'] = 111 }
     ccc && ccc.a && ccc.a.t && setC()
 ```
@@ -158,7 +158,7 @@ var ccc = { a: { t: 123 } }
 ### 12.關於arguments,你要注意一下，想要把它當成數組用的話，需要轉化一下哦~
 
 ```bash
-function setArg() {
+    function setArg() {
       console.log(arguments) // Arguments(4)
       console.log([].slice.call(arguments)) // Array(4) ----[1,2,3,'4']
     }
@@ -168,7 +168,7 @@ function setArg() {
 ### 14.使用Object.prototype 和 for in 搭配使用可能引發的坑，要注意下下~~
 * 14.1如果你非要用，那就記得搭配上Object.hasOwnProperty(key)
 ```bash
-var q = { a: 1, s: 2, d: 3 };
+    var q = { a: 1, s: 2, d: 3 };
 
     Object.prototype.w = function () { };
     for (var key in q) {
@@ -233,7 +233,7 @@ console.log(myDiv)
 ### 16.關於按给定的参数创建一日期对象以及獲取瀏覽器版本
 
 ```bash
-const data1 = new Date("2019-01-01")
+  const data1 = new Date("2019-01-01")
   // Tue Jan 01 2019 08:00:00 GMT+0800 (台北标准时间)
   // ie某些版本會告訴你語法錯誤
   const data2 = new Date(2019,0,1)
@@ -271,7 +271,7 @@ const data1 = new Date("2019-01-01")
 ### 17. js裡常用的replace方法--string/正则我們容易忽略或者忘記的地方
 
 ```bash
-var str11 = '文本：需要替換的地方：1.待替換1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,'
+ var str11 = '文本：需要替換的地方：1.待替換1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,'
  var newStr11 = str11.replace('待替換', '替換過啦')
  console.log(newStr11)
 //  文本：需要替換的地方：1.替換過啦1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,
