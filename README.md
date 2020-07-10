@@ -1,5 +1,5 @@
 
-@[前端防錯以及好用小tips指南總結](https://aaa/README.md)
+@[前端防錯以及好用小tips指南總結](https://github.com/tangdou369098655/someTips/edit/master/README.md)
 
 
 
@@ -13,6 +13,7 @@
     // 1.1接受一个数组参数，指定需要转成字符串的属性，第二个参数指定，只转a属性。
     JSON.stringify({ a: 1, b: 2 }, ['a'])
     // '{"a":1}'
+    
     // 1.2接受函数参数，转化对象的键和值
     function f12(key, value) {
       if (typeof value === "number") {
@@ -23,6 +24,7 @@
 
     JSON.stringify({ a: 1, b: 2 }, f12)
     // '{"a":2,"b":4}'
+    
     // 1.3只拿自己想要的值，如果处理函数返回undefined或没有返回值，這個属性就沒了啊哈哈。
     function f13(key, value) {
       if (typeof (value) == "string") {
@@ -33,6 +35,7 @@
 
     JSON.stringify({ a: "abc", b: 123 }, f13)
     // '{"b":123}'
+    
     // 1.4給數據添加可讀性
     var d = { a: 1, b: 2 }
     JSON.stringify(d, null, 2);
@@ -40,6 +43,7 @@
     //   "a": 1,
     //   "b": 2
     // }"
+    
     // 1.5只输出你你想要的keys，加強版
     var e = { a: 1, b: 2, c: 3, d: 4 }
     JSON.stringify(e, ["a", "d"], 4);
@@ -47,6 +51,7 @@
     //     "a": 1,
     //     "d": 4
     // }"
+    
     // 1.5還可以這樣玩一下
     JSON.stringify({ a: 1, b: 2, c: 3 }, null, '|----');
     // "{
@@ -54,6 +59,7 @@
     // |----"b": 2,
     // |----"c": 3
     // }"
+    
     // 1.6關於JSON.parse你也可以試試看喲
 ```
 ### 2.switch case 一定要記得寫break
@@ -89,8 +95,7 @@
     console.log(z1, m1); // m z
 ```
 ### 8.Array forEach()中无法return和break，代替方法有some()与every()
-* 解決
-* 好用的
+
 
 ```bash
     var arr = [1, 2, 3, 4, 5];
@@ -101,7 +106,7 @@
       }
       console.log(v);
     });
-    // VM59:5 Uncaught SyntaxError: Illegal break statement
+    // Uncaught SyntaxError: Illegal break statement
     var arr = [1, 2, 3, 4, 5];
     var num = 3;
     arr.forEach(function (v) {
@@ -114,6 +119,7 @@
     // VM62:7 2
     // VM62:7 4
     // VM62:7 5
+    
     // 解決如下,使用数组的另外两个方法some()与every()：
     var arr = [1, 2, 3, 4, 5];
     var num = 3;
@@ -140,7 +146,7 @@
     // 2
     // false 跳出循環啦~~~~
 ```
-* 小總結
+* 小金理解的小總結
 * 8.1 forEach没有返回值，只针对每个元素调用函數.
 * 8.2 some 当内部return true时跳出整个循环.
 * 8.3 every 当内部return false时跳出整个循环.
@@ -271,18 +277,23 @@ console.log(myDiv)
 ### 17. js裡常用的replace方法--string/正则我們容易忽略或者忘記的地方
 
 ```bash
- var str11 = '文本：需要替換的地方：1.待替換1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,'
+ var str11 = '小金：需要替換的地方：1.待替換1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,'
  var newStr11 = str11.replace('待替換', '替換過啦')
  console.log(newStr11)
-//  文本：需要替換的地方：1.替換過啦1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,
+//  小金：需要替換的地方：1.替換過啦1,2.待替換2,3.待替換3,4.待替換4,5.待替換5,6.待替換6,7.待替換7,
+
 // 從以上我們可以看出，只替換了第一個哦~~
+
 let myReg = new RegExp('^' + escape('待替換'))
 // .replace(/%/g, '\\')
  console.log(myReg)
+ 
  var newStr12 = str11.replace(new RegExp('待替換', 'g'), '替換過啦')
- console.log("new RegExp('待替換', 'g')", newStr12) // new RegExp('待替換', 'g') 文本：需要替換的地方：1.替換過啦1,2.替換過啦2,3.替換過啦3,4.替換過啦4,5.替換過啦5,6.替換過啦6,7.替換過啦7,
+ console.log("new RegExp('待替換', 'g')", newStr12) 
+ // new RegExp('待替換', 'g') 小金：需要替換的地方：1.替換過啦1,2.替換過啦2,3.替換過啦3,4.替換過啦4,5.替換過啦5,6.替換過啦6,7.替換過啦7,
  var res1 = str11.split('待替換').join('替換過啦')
- console.log('split-join', res1) // split-join 文本：需要替換的地方：1.替換過啦1,2.替換過啦2,3.替換過啦3,4.替換過啦4,5.替換過啦5,6.替換過啦6,7.替換過啦7,
+ console.log('split-join', res1) 
+ // split-join 小金：需要替換的地方：1.替換過啦1,2.替換過啦2,3.替換過啦3,4.替換過啦4,5.替換過啦5,6.替換過啦6,7.替換過啦7,
 ```
 
 ## 结语
